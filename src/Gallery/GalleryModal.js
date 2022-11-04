@@ -94,17 +94,17 @@ function GalleryModal(props) {
   	<div id = "gallery-modal" className = "gallery-modal">
       <div className = "gallery-modal-content">
         <div>
-          <button id = "modal-navleft-side" className = "modal-navbtn-side" title = "Previous image" onClick = {() => prevNextImg(-1)}><span className = "material-symbols-outlined">navigate_before</span></button>
-          <button id = "modal-navright-side" className = "modal-navbtn-side" title = "Next image" onClick = {() => prevNextImg(1)}><span className = "material-symbols-outlined">navigate_next</span></button>
           <a href = {props.states.modalImgPath} target = "_blank" rel = "noreferrer">
             <img id = "modal-img"src = {props.states.modalImgPath} alt = "Enlarged image" />
           </a>
         </div>
+
         <div title = {caption}>{caption}</div>
+
         <div>
+          <KeyboardEventHandler handleKeys={['left', 'right']} onKeyEvent={(key, event) => navigationKeys(key, event)} handleFocusableElements = {true} />
           <button title = "Previous image" className = "modal-btn-bottom" onClick = {() => prevNextImg(-1)}><span className = "material-symbols-outlined">navigate_before</span></button>
           <button title = "Next image" className = "modal-btn-bottom" onClick = {() => prevNextImg(1)}><span className = "material-symbols-outlined">navigate_next</span></button>
-          <KeyboardEventHandler handleKeys={['left', 'right']} onKeyEvent={(key, event) => navigationKeys(key, event)} handleFocusableElements = {true} />
           <button title = "Copy relative URL to Clipboard for News Editor" className = "modal-btn-bottom" onClick = {copyToClipboard}><span className = "material-symbols-outlined">content_paste</span></button>
           <button title = "Close" className = "modal-btn-bottom" onClick = {() => props.states.setModalVisible(false)}>&times;</button>
         </div>
@@ -116,3 +116,6 @@ function GalleryModal(props) {
 };
 
 export default GalleryModal;
+
+          // <button id = "modal-navleft-side" className = "modal-navbtn-side" title = "Previous image" onClick = {() => prevNextImg(-1)}><span className = "material-symbols-outlined">navigate_before</span></button>
+          // <button id = "modal-navright-side" className = "modal-navbtn-side" title = "Next image" onClick = {() => prevNextImg(1)}><span className = "material-symbols-outlined">navigate_next</span></button>
